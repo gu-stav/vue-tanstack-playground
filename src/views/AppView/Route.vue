@@ -3,8 +3,10 @@
     import { defineProps, provide, computed } from 'vue';
     import { AuthenticatedUser} from '../../symbols';
     import { useAuth } from '../../lib/useAuth';
+    import { useApi } from '../../lib/useApi';
 
     const auth = useAuth();
+    const { get } = useApi();
 
     defineProps<{
         something: string;
@@ -13,13 +15,13 @@
     const { data, isFetching, refetch } = useQuery({
         queryKey: ['post'],
         queryFn: async () => {
-            const res = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+            const data = await get<{ something: boolean }>('https://jsonplaceholder.typicode.com/posts/1');
 
             await new Promise(resolve => setTimeout(() => {
                 resolve(null);
             }, 1000))
 
-            return res.json();
+            return data;
         },
         staleTime: 0
     });
