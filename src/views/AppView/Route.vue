@@ -1,7 +1,10 @@
 <script setup lang="ts">
     import { useQuery } from '@tanstack/vue-query';
-    import { defineProps, provide } from 'vue';
+    import { defineProps, provide, computed } from 'vue';
     import { AuthenticatedUser} from '../../symbols';
+    import { useAuth } from '../../lib/useAuth';
+
+    const auth = useAuth();
 
     defineProps<{
         something: string;
@@ -28,6 +31,8 @@
 </script>
 
 <template>
+    <h1>Token {{ JSON.stringify(auth.token) }}</h1>
+
     <p v-if="isFetching">Loading</p>
 
     <router-view v-if="!isFetching" />
