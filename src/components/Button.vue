@@ -9,13 +9,14 @@
     };
 
     const props = withDefaults(defineProps<ButtonProps>(), {
+        display: 'inline-block',
         type: 'button'
     })
 </script>
 
 <template>
-    <Box asChild display="inline-block">
-        <button v-bind="props">
+    <Box v-bind="props" asChild>
+        <button>
             <slot />
         </button>
     </Box>
@@ -24,5 +25,6 @@
 <style scoped>
     button {
         background: red;
+        color: green
     }
 </style>
