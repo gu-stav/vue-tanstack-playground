@@ -1,13 +1,12 @@
 <script setup lang="ts">
-    import { inject } from 'vue';
-    import { AuthenticatedUser } from '../../../symbols';
+    import { AuthenticatedUser, injectStrict } from '../../../symbols';
     import Button from '../../../components/Button.vue';
     import Box from '../../../components/Box.vue';
     import { useAuth } from '../../../lib/useAuth';
 
     const auth = useAuth();
 
-    const data = inject(AuthenticatedUser);
+    const data = injectStrict(AuthenticatedUser);
 </script>
 
 <template v-if="data">

@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { useQuery } from '@tanstack/vue-query';
-    import { defineProps, provide, computed } from 'vue';
+    import { defineProps, provide } from 'vue';
     import { AuthenticatedUser} from '../../symbols';
     import { useAuth } from '../../lib/useAuth';
     import { useApi } from '../../lib/useApi';
